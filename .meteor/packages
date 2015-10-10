@@ -21,10 +21,11 @@ insecure                # Allow all DB writes from clients (for prototyping)
 meteortoys:allthings
 accounts-password
 audit-argument-checks
-check
 digilord:faker
 kadira:flow-router
 meteorhacks:fast-render
 reactive-var
 twbs:bootstrap
 kadira:blaze-layout
+afruth:chapp
+check

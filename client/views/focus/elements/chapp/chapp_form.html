@@ -1,0 +1,35 @@
+<template name="chapp_form">
+    <div id="chapp_wrapper">
+        <div id="chapp_text">
+            {{#each chapp}}
+                {{>chapp_item}}
+            {{/each}}
+        </div>
+
+
+        <form action="search-results.html" method="GET" class="search-form">
+            <div class="search-pane">
+                <input type="text" name="search" placeholder="Search here...">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
+
+        <form id="chapp-form" class="search-form">
+            <div class="search-pane">
+            <div id="chapp-input-div"><input id="chapp-input" type="text" class="form-control" placeholder="Enter your
+                                             message
+                                             here"
+                    /></div>
+            <div class="submit">
+                <button type="submit" id="chapp-button"><i class="fa fa-share"></i></button>
+            </div>
+            </div>
+        </form>
+    </div>
+</template>
+
+<template name="chapp_item">
+    <p>{{formatDate chatDate}} | {{chatUserName}}: {{chatText}}</p>
+</template>
