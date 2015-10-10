@@ -43,6 +43,7 @@ http@1.1.1
 id-map@1.0.4
 insecure@1.0.4
 jquery@1.11.4
+jsx@0.2.1
 kadira:blaze-layout@2.1.0
 kadira:flow-router@2.7.0
 lai:collection-extensions@0.1.4
@@ -74,6 +75,8 @@ meteortoys:toykit@2.0.1
 meteortoys:toypro@2.0.0
 minifiers@1.1.7
 minimongo@1.0.10
+mizzao:timesync@0.3.4
+mizzao:user-status@0.6.6
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
 mongo@1.1.2
@@ -88,6 +91,11 @@ ordered-dict@1.0.4
 promise@0.5.0
 random@1.0.4
 rate-limit@1.0.0
+react@0.1.13
+react-meteor-data@0.1.9
+react-runtime@0.13.3_7
+react-runtime-dev@0.13.3_7
+react-runtime-prod@0.13.3_6
 reactive-dict@1.1.2
 reactive-var@1.0.6
 reload@1.1.4

@@ -13,3 +13,8 @@
 body {
     background: #F2F2F2;
 }
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}

@@ -3,10 +3,43 @@
     <div class="col-md-6">
         <div class="box box-bordered box-color">
             <div class="box-title">
-                <h3>We are excited to announce <span class="brand">lockstep.net</span>!</h3>
+                <h3>Tasks</h3>
             </div>
             <div class="box-content padding">
+                {{> doneTask}}
+                {{#each user}}
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="row">
+                                {{name}}
+                            </div>
+                            <div class="row">
+                                {{mood}}
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <ul>
+                                {{#each tasksDone}}
+                                    {{> task}}
+                                {{/each}}
+                            </ul>
+                            <ul>
+                                {{#each tasksPlanned}}
+                                    {{> task}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                    <hr/>
+                {{/each}}
+                {{> addTask}}
             </div>
+
         </div>
     </div>
+</template>
+
+
+<template name="task">
+    <li>{{formatDate timestamp}} - {{display}}</li>
 </template>
