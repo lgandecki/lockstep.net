@@ -1,0 +1,15 @@
+.center {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#main {
+    margin-top: 50px !important;
+    margin-left: 0px !important;
+    background: #F2F2F2;
+}
+
+body {
+    background: #F2F2F2;
+}

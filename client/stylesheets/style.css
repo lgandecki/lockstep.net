@@ -1,0 +1,33 @@
+.welcome p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.welcome p, .align-center {
+    text-align: center;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+
+.box:not(.box-modal) {
+    -moz-box-shadow: 6px 6px 8px 2px #ccc;
+    -webkit-box-shadow: 6px 6px 8px 2px #ccc;
+    box-shadow: 6px 6px 8px 2px #ccc;
+}
+
+
+ul.icons {
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 20px
+}
+
+ul.icons > li {
+    margin-bottom: 5px;
+    list-style-type: none;
+}
+
+.braggaList, .braggaList > li > i  {
+    line-height: 56px;
+    font-size: 20px;
+}
