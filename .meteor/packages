@@ -27,3 +27,4 @@ kadira:flow-router
 meteorhacks:fast-render
 reactive-var
 twbs:bootstrap
+kadira:blaze-layout

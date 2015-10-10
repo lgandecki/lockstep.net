@@ -3,54 +3,25 @@
 </head>
 
 <body>
-<div class="container-fluid">
-    <div id="wrapper">
-        <div id="navigation" class="navbar-fixed-top">
-            <div class="container"></div>
-        </div>
-        <div id="main">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 center">
-                        <div class="box box-bordered box-color">
-                            <div class="box-title">
-                                <h3>We are excited to announce lockstep.net!</h3>
-                            </div>
-                            <div class="box-content padding welcome">
-                                <ul class="fa-ul braggaList">
-                                    <li><i class="fa fa-li fa-check"></i>
-                                        Achieve more</li>
-                                </ul>
-                                <p>and</p>
-                                <ul class="fa-ul braggaList">
-                                    <li>
-                                        <i class="fa fa-li fa-check"></i>
-                                        Have fun</li>
-                                    <li>
-                                        <i class="fa fa-li fa-check"></i>
-                                        Meet new people</li>
-                                </ul>
-                                <p>... while doing so</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
 
-                    <div class="col-md-6 center">
-                        <div class="box box-bordered box-color">
-                            <div class="box-content padding welcome">
-                                <p>Open Beta starting October 11 2015.</p>
-                            </div>
-                        </div>
-                    </div>
+
+</body>
+
+<template name="layout">
+
+    <div class="container-fluid">
+        <div id="wrapper">
+            {{> header }}
+            {{> Template.dynamic template=header}}
+
+            <div id="main">
+                <div class="container">
+                    {{> Template.dynamic template=main}}
                 </div>
             </div>
         </div>
-    </div>
-    <div id="footer">
+        <div id="footer">
 
+        </div>
     </div>
-</div>
-
-</body>
+</template>

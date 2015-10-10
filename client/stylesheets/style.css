@@ -1,20 +1,18 @@
 .welcome p {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.welcome p, .align-center {
-    text-align: center;
-    font-weight: bold;
-    font-size: 125%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 100%;
 }
 
+.align-center {
+    text-align: center;
+}
 
 .box:not(.box-modal) {
     -moz-box-shadow: 6px 6px 8px 2px #ccc;
     -webkit-box-shadow: 6px 6px 8px 2px #ccc;
     box-shadow: 6px 6px 8px 2px #ccc;
 }
-
 
 ul.icons {
     text-align: left;
@@ -27,7 +25,48 @@ ul.icons > li {
     list-style-type: none;
 }
 
-.braggaList, .braggaList > li > i  {
+.braggaList, .braggaList > li > i {
     line-height: 56px;
     font-size: 20px;
+}
+
+.braggaList .align-center {
+    margin-top: -15px;
+    margin-bottom: -15px;
+}
+.braggaListPhone {
+    font-size: 300%;
+}
+
+@media (max-width: 1024px) {
+    h3 {
+        font-size: 200% !important;
+    }
+}
+
+#myBrand {
+    background: url("../img/logo@2x.png") no-repeat;
+    background-size: 72px;
+    float: left;
+    padding-right: 69px;
+    line-height: 72px;
+    color: rgb(60, 171, 218);
+}
+
+
+@font-face {
+    font-family: "sans-serif-plus-7";
+    src: url("/font/sans-serif-plus-7.regular.ttf");
+}
+
+h2 {
+    font-family: "sans-serif-plus-7";
+    margin-top: 21px;
+}
+
+.brand {
+    font-family: "sans-serif-plus-7";
+    color: black;
+    margin-left: 5px;
+    margin-right: 5px;
 }
