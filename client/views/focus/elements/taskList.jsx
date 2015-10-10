@@ -5,7 +5,9 @@ Template.taskList.helpers({
         var _users = [];
         if (_user && _user.currentTeam) {
             _team = Teams.findOne({_id: Meteor.user().currentTeam});
-            _users = _team.userIds;
+            if (_team) {
+                _users = _team.userIds;
+            }
         }
         return _users;
     },
@@ -21,10 +23,19 @@ Template.taskList.helpers({
         }
         return _name;
     },
-    tasksDone() {
-        return Tasks.find({owner: this.toString(), current: true, type: "done"})
-    },
     tasksPlanned() {
-        return Tasks.find({owner: this.toString(), current: true, type: "planned"});
+        return Tasks.find({userId: this.toString(), current: true, type: "planned", phase: 2});
+    },
+    tasksDone() {
+        return Tasks.find({userId: this.toString(), current: true, type: "done"})
+    },
+    tasksToDo() {
+        return Tasks.find({userId: this.toString(), current: true, type: "planned", phase: 1});
     }
 });
+
+
+// the moment we click start we change done to current: false
+// we change planned phase: 2
+// we change phase 2 to current: false
+// we switch from e

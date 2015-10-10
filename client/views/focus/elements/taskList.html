@@ -9,7 +9,7 @@
                 {{> doneTask}}
                 {{#each user}}
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <div class="row">
                                 {{name}}
                             </div>
@@ -17,24 +17,43 @@
                                 {{mood}}
                             </div>
                         </div>
-                        <div class="col-md-10">
-                            <ul>
-                                {{#each tasksDone}}
-                                    {{> task}}
-                                {{/each}}
-                            </ul>
+                        <div class="col-md-9" style="border-left: 1px solid #eee;">
+
+                            {{#if notEmptyCursor tasksPlanned}}
+                                Planned:
+                            {{/if}}
                             <ul>
                                 {{#each tasksPlanned}}
                                     {{> task}}
                                 {{/each}}
                             </ul>
+
+                            {{#if notEmptyCursor tasksDone}}
+                                Done:
+                            {{/if}}
+                            <ul>
+                                {{#each tasksDone}}
+                                    {{> task}}
+                                {{/each}}
+                            </ul>
+
+                            {{#if notEmptyCursor tasksToDo}}
+                                Todo:
+                            {{/if}}
+                            <ul>
+                                {{#each tasksToDo}}
+                                    {{> task}}
+                                {{/each}}
+                            </ul>
+
                         </div>
                     </div>
                     <hr/>
                 {{/each}}
                 {{> addTask}}
-            </div>
 
+            </div>
+            {{> startButton}}
         </div>
     </div>
 </template>
@@ -43,3 +62,4 @@
 <template name="task">
     <li>{{formatDate timestamp}} - {{display}}</li>
 </template>
+

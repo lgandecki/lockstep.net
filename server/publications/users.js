@@ -1,9 +1,25 @@
 Meteor.publish("userData", function() {
-   return Meteor.users.find({_id: this.userId}, {fields: {currentTeam: 1}});
+   return Meteor.users.find({_id: this.userId}, {fields: {currentTeam: 1, ready: 1}});
 });
 
-Meteor.publish("teamMembers", function() {
-    var _activeTeamUsers = returnActiveTeamUsers.call(this);
-    console.log("_activeTeamUsers", _activeTeamUsers);
-    return Meteor.users.find({_id: {$in: _activeTeamUsers}}, {fields: {currentTeam: 1, "profile.sillyName": 1}});
+returnActiveTeamUsers = function(userId) {
+    var _activeTeamUsers = [];
+    if (userId) {
+        var _user = Meteor.users.findOne({_id: userId});
+        var _team = Teams.findOne({_id: _user.currentTeam, userIds: userId, current: true, private: false});
+        _team && _team.userIds.forEach(function(otherUserId) {
+            console.log("iterating over team members ", otherUserId);
+            var otherUser = Meteor.users.findOne({_id: otherUserId});
+            if (otherUser.currentTeam === _team._id) {
+                _activeTeamUsers.push(otherUser._id);
+            }
+        });
+    }
+    return _activeTeamUsers;
+}
+
+Meteor.publish("teamMembers", function(teamId) {
+    check(teamId, String);
+
+    return Meteor.users.find({currentTeam: teamId}, {fields: {currentTeam: 1, "profile.sillyName": 1, ready: 1}});
 });

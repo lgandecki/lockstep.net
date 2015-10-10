@@ -1,7 +1,5 @@
-Meteor.publish("myTeam", function() {
-    var _currentTeam = "";
-    if (this.user) {
-        _currentTeam = this.user.currentTeam;
-    }
-    return Teams.findOne({_id: _currentTeam, userIds: this.userId});
+Meteor.publish("myTeam", function(teamId) {
+    check(teamId, String);
+    console.log("subscribing to my team");
+    return Teams.find({_id: teamId, userIds: this.userId});
 });

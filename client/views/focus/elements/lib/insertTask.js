@@ -2,11 +2,20 @@ if (!Meteor.lockstep) {
     Meteor.lockstep = {};
 }
 Meteor.lockstep.insertTask = function(display, type) {
-    Tasks.insert({
+
+    var _task = {
         timestamp: new Date(),
         display: display,
-        owner: Meteor.userId(),
+        userId: Meteor.userId(),
         type: type,
-        current: true
-    })
+        current: true,
+        teamId: Meteor.user().currentTeam
+    };
+    if (type === "planned") {
+        _task.phase = 1;
+    } else if (type === "done") {
+        _task.phase = 2;
+    }
+
+    Tasks.insert(_task);
 };
