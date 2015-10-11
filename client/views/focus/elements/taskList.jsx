@@ -35,6 +35,9 @@ Template.taskList.helpers({
     }
 });
 
+Template.task.onRendered(function() {
+   //$(".emojiPicker").
+});
 
 // the moment we click start we change done to current: false
 // we change planned phase: 2
