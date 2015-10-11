@@ -97,3 +97,13 @@ li.emojiPicker:hover {
     font-weight: bold;
     font-size: 125%;
 }
+
+.box-content p {
+    text-indent: 15px;
+    font-size: 125%;
+}
+
+.tip {
+    vertical-align: middle;
+    font-size: 125%;
+}

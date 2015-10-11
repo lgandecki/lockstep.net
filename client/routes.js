@@ -42,8 +42,18 @@ FlowRouter.route("/history", {
 });
 
 
+FlowRouter.route("/pricing", {
+    action: function() {
+        BlazeLayout.render("layout", {header: "header", main: "pricing"});
+        setActiveLink();
+    }
+});
+
+
+
+
 var setActiveLink = function() {
     Session.set("activeUrl", FlowRouter.current().route.path);
 };
 
-//FlowRouter.triggers.exit([setActiveLink], {except: ["/"]});
+//FlowRouter.triggers.enter([setActiveLink]);
