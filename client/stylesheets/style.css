@@ -87,8 +87,8 @@ h2 {
     outline: 0;
 }
 
-.emojiPicker :hover {
-    cursor: pointer;
-    font-size: 110%;
-    font-weight: bold;
+li.emojiPicker:hover {
+    cursor: pointer !important;
+    font-size: 110% !important;
+    font-weight: bold !important;
 }

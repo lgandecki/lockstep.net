@@ -30,7 +30,6 @@ Meteor.lockstep.timer = function(minutes) {
 
     var _currentDate = new Date();
     var _dd = futureDate - _currentDate;
-    //console.log("_dd for ", _dd, " minutes ", minutes);
     var _dmin = Math.floor(((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
     var _dsec = Math.floor((((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
     var $ss = $(".second"),
