@@ -40,9 +40,10 @@ Template.startButton.onCreated(function() {
         if (_counter.ready > 0 && (_counter.ready === _counter.outOf)) {
             console.log("Let's start pomodoro!");
             $(".timer").slideDown();
+            Meteor.lockstep.timer(Meteor.lockstep.workTime);
         }
-    })
-})
+    });
+});
 
 
 var _calculateCounter = function() {
