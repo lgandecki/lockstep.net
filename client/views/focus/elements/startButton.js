@@ -41,6 +41,9 @@ Template.startButton.onCreated(function() {
             console.log("Let's start pomodoro!");
             $(".timer").slideDown();
             Meteor.lockstep.timer(Meteor.lockstep.workTime);
+
+            Meteor.call("cleanUpTasksOnStart");
+
         }
     });
 });
