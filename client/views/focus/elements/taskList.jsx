@@ -2,7 +2,7 @@
 Template.taskList.helpers({
     firstTimeHere() {
         var _user = Meteor.user();
-        return Tasks.find({userId: _user._id, current: true, type: "planned", teamId: _user.currentTeam}).count() === 0;
+        return !_user || Tasks.find({userId: _user._id, current: true, type: "planned", teamId: _user.currentTeam}).count() === 0;
     },
     user() {
         var _user = Meteor.user();
