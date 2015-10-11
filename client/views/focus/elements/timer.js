@@ -58,6 +58,9 @@ var afterRest = function() {
     clockTicking.pause();
     timerFunction = "nextLog";
     Meteor.users.update({_id: Meteor.userId()}, {$set: {ready: false}});
+    $(".timer").slideUp(400, "easeInBack", function() {
+
+    });
 };
 
 
