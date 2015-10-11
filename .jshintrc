@@ -44,8 +44,8 @@
   "boss"          : false,     // true: Tolerate assignments where comparisons would be expected
   "debug"         : false,     // true: Allow debugger statements e.g. browser breakpoints.
   "eqnull"        : false,     // true: Tolerate use of `== null`
-  "es5"           : false,     // true: Allow ES5 syntax (ex: getters and setters)
-  "esnext"        : false,     // true: Allow ES.next (ES6) syntax (ex: `const`)
+  "es5"           : true,     // true: Allow ES5 syntax (ex: getters and setters)
+  "esnext"        : true,     // true: Allow ES.next (ES6) syntax (ex: `const`)
   "moz"           : false,     // true: Allow Mozilla specific syntax (extends and overrides esnext features)
   // (ex: `for each`, multiple try/catch, function expression…)
   "evil"          : false,     // true: Tolerate use of `eval` and `new Function()`
@@ -133,27 +133,12 @@
     "Router": false,           // iron-router
 
     // Project-specific Globals
-    "edSpring": true,
 
     // Project-specific Globals - Meteor collections
-    "RtiForms": true,
-    "FormsNotifications": true,
-    "Assessments": true,
-    "ProgressMonitoringSchedules": true,
-    "Schedule": true,
-    "BenchmarkPeriods": true,
-    "Interventions": true,
-    "InterventionTime": true,
-    "Students": true,
-    "AssessmentScores": true,
-    "TargetGrowthRates": true,
-    "Labs": true,
-    "LabStudents": true,
-    "Sites": true,
-    "OneClicksOrders": true,
+    "Tasks": true,
+    "Teams": true,
 
     // Project-specific packages
-    "AutoForm": true,
     "moment": true,
     "bootbox": true
   }

@@ -4,9 +4,10 @@ clockTicking = null, alarm = null;
 
 if (!Meteor.lockstep){
     Meteor.lockstep = {};
-    Meteor.lockstep.restTime = 5;
-    Meteor.lockstep.workTime = 25;
 }
+
+Meteor.lockstep.restTime = 0.1; // should be 5
+Meteor.lockstep.workTime = 0.2; // should be 25
 
 Template.timer.onRendered(function() {
     $(".knob").knob();
@@ -30,6 +31,7 @@ Meteor.lockstep.timer = function(minutes) {
     var _interval = setInterval(function() {
         var _currentDate = new Date();
         var _dd = futureDate - _currentDate;
+        //console.log("_dd for ", _dd, " minutes ", minutes);
         var _dmin = Math.floor(((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
         var _dsec = Math.floor((((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
         var $ss = $(".second"),
@@ -37,7 +39,6 @@ Meteor.lockstep.timer = function(minutes) {
         $ss.val(_dsec).trigger("change");
         $mm.val(_dmin).trigger("change");
         if (_dsec < 1 && _dmin < 1) {
-            console.log("timerFunction inside timer", timerFunction);
             if (timerFunction === "rest") {
                 afterRest();
             }
@@ -45,11 +46,10 @@ Meteor.lockstep.timer = function(minutes) {
                 afterLog();
             }
             window.clearInterval(_interval);
-        } else {
-            console.log("timerFunction inside timer", timerFunction, _dsec, _dmin);
         }
+
     }, 1000);
-;}
+};
 
 
 
@@ -57,6 +57,7 @@ var afterRest = function() {
     alarm.play();
     clockTicking.pause();
     timerFunction = "nextLog";
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {ready: false}});
 };
 
 

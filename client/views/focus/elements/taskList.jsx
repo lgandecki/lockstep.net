@@ -1,3 +1,4 @@
+"use strict";
 Template.taskList.helpers({
     user() {
         var _user = Meteor.user();
@@ -27,7 +28,7 @@ Template.taskList.helpers({
         return Tasks.find({userId: this.toString(), current: true, type: "planned", phase: 2});
     },
     tasksDone() {
-        return Tasks.find({userId: this.toString(), current: true, type: "done"})
+        return Tasks.find({userId: this.toString(), current: true, type: "done"});
     },
     tasksToDo() {
         return Tasks.find({userId: this.toString(), current: true, type: "planned", phase: 1});

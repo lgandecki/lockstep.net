@@ -1,3 +1,4 @@
+"use strict";
 Meteor.methods({
     findAndJoinTeam: function() {
         console.log("how many times running findAndJoin and for user ", this.userId);
@@ -21,6 +22,16 @@ Meteor.methods({
                 Teams.update({_id: _openTeam._id}, {$addToSet: {userIds: this.userId}});
                 _teamId = _openTeam._id;
             }
+            Tasks.update(
+                {
+                    userId: this.userId, current: true,
+                    timestamp: {$gte: new Date(moment().startOf('day'))}
+                },
+                {
+                    $set: {teamId: _teamId}
+                }
+            );
+
         }
 
         Meteor.users.update({_id: this.userId}, {$set: {currentTeam: _teamId}});
