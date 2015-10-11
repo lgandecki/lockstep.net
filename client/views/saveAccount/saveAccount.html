@@ -1,0 +1,86 @@
+<template name="saveAccount">
+    <div class="row">
+        <div class="col-md-8 center">
+            <div class="box box-bordered box-color">
+                <div class="box-title">
+                    <h3>So... Do I have to pay?</h3>
+                </div>
+                <div class="box-content padding">
+                    <p>We hope you like it here!</p>
+
+                    <p>Let's make sure you can keep your logs and achievements and associate the account with you!
+                        :-)</p>
+
+                    <p><a href='/' class="linkWithFacebook">Click here to link with facebook</a></p>
+
+
+                    <p><a href="/" class="addAccount">Click here to trust us with your email and password -
+                        disabled for early beta</a></p>
+
+                    <p>We recommend linking your account with facebook - we don't collect any data and
+                        don't post on
+                        your behalf. We are surprised by how many people would rather give strangers their own
+                        password for protection. More than that - they put the password right next to the email this
+                        passwords unlocks! And then when they forget a password, they try all their passwords... Scary!
+                        Please don't do that! Trust billions dollars pumped in making Facebook (or twitter, or
+                        google) secure, and make sure you remember that ONE password. Don't reuse this.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> addEmailAccount }}
+</template>
+
+
+<template name="addEmailAccount">
+    <div id="signUpWithEmailModal" class="modal fade" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Connect with Email</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-validate form-horizontal form-bordered" id="signUp">
+                        <div class="form-group">
+                            <label class="control-label hidden-xs col-sm-4">Email (lockstep.net login)</label>
+
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input class="signUp newEmail form-control" type="email" required
+                                           placeholder="Email address">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label hidden-xs col-sm-4">Password</label>
+
+                            <div class="col-sm-8">
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    <input class="signUp newPassword form-control" type="password" required
+                                           placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="submit" style="visibility: hidden;"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-primary btn-primary-main cancel reactive-modal-btn"
+                            data-dismiss="modal">Nevermind..
+                    </button>
+
+                    <button type="button" class="btn btn-primary btn-primary-main ok reactive-modal-btn">Do it!</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

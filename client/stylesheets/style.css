@@ -107,3 +107,32 @@ li.emojiPicker:hover {
     vertical-align: middle;
     font-size: 125%;
 }
+
+
+.modal-footer {
+    background-color: #f5f5f5;
+    border-top: 3px solid rgb(60,171,218);
+    text-align: right;
+    padding: 15px;
+}
+
+
+.modal-content {
+    border: 3px solid rgb(60,171,218);
+}
+
+.modal-header {
+    background: rgb(60,171,218);
+    color: white;
+}
+
+.modal-body-form {
+    padding: 0px;
+}
+
+.lead {
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 30px;
+}

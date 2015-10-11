@@ -9,12 +9,14 @@ Template.header.helpers({
             {
                 name: "Tasks Log",
                 url: "/history",
-                active: false
+                active: false,
+                logIn: true
             },
             {
                 name: "Pricing (?)",
                 url: "/pricing",
-                active: false
+                active: false,
+                logIn: true
             },
             {
                 name: "Help!",
@@ -24,15 +26,44 @@ Template.header.helpers({
             {
                 name: "Save account",
                 url: "/save",
-                active: false
+                active: false,
+                logIn: true
+            },
+            {
+                name: "Login",
+                url: '/login',
+                active: false,
+                logOut: true
+            },
+            {
+                name: "Logout",
+                url: '/logout',
+                active: false,
+                login: true
             }
         ];
+        var _authorizedLinks = [];
 
         _links.forEach(function(link) {
+            if (Meteor.userId()) {
+                if (link.logIn) {
+                    _authorizedLinks.push(link);
+                } else if (!link.logOut) {
+                    _authorizedLinks.push(link);
+                }
+            } else {
+                if (!link.login) {
+                    _authorizedLinks.push(link);
+                } else if (link.logOut) {
+                    _authorizedLinks.push(link);
+                }
+            }
             if (Session.equals("activeUrl", link.url)) {
+
                 link.active = "active";
             }
+
         });
-        return _links;
+        return _authorizedLinks;
     }
 });
