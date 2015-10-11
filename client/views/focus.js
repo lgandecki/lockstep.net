@@ -1,4 +1,4 @@
-Template.focus.onCreated(function() {
+Template.focus.onRendered(function() {
     this.subscribe("tasks");
     var _that = this;
     Tracker.autorun(function() {
@@ -15,3 +15,5 @@ Template.focus.onCreated(function() {
         }
     });
 });
+
+// we lose the tasks after reloading of both

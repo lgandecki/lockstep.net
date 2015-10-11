@@ -21,6 +21,7 @@ returnActiveTeamUsers = function(userId) {
 //TODO make sure to figure out a way to have private teams.
 Meteor.publish("otherPeopleTasks", function(teamId) {
     check(teamId, String);
+    // shouid check whether user has that team as current
 
     return Tasks.find({teamId: teamId, current: true});
 });
