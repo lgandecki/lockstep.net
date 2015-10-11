@@ -62,7 +62,9 @@
                 {{> addTask}}
 
             </div>
-            {{> startButton}}
+            {{#if haveTeam}}
+                {{> startButton}}
+            {{/if}}
         </div>
     </div>
 </template>

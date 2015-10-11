@@ -2,7 +2,7 @@
 Template.taskList.helpers({
     firstTimeHere() {
         var _user = Meteor.user();
-        return !_user || Tasks.find({userId: _user._id, current: true, type: "planned", teamId: _user.currentTeam}).count() === 0;
+        return !_user || Tasks.find({userId: _user._id, current: true, type: "planned", phase: 2, teamId: _user.currentTeam}).count() === 0;
     },
     user() {
         var _user = Meteor.user();
@@ -36,8 +36,17 @@ Template.taskList.helpers({
     },
     tasksToDo() {
         return Tasks.find({userId: this.toString(), current: true, type: "planned", phase: 1});
+    },
+    haveTeam() {
+        var _user = Meteor.user();
+        var _team;
+        if (_user) {
+            _team = Teams.findOne({_id: _user.currentTeam});
+        }
+        return _team;
     }
 });
+
 
 Template.task.helpers({
     emojis: function() {

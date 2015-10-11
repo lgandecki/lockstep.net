@@ -6,8 +6,8 @@ if (!Meteor.lockstep){
     Meteor.lockstep = {};
 }
 
-Meteor.lockstep.restTime = 0.1; // should be 5
-Meteor.lockstep.workTime = 0.2; // should be 25
+Meteor.lockstep.restTime = 5; // should be 5
+Meteor.lockstep.workTime = 25; // should be 25
 
 Template.timer.onRendered(function() {
     $(".knob").knob();

@@ -46,6 +46,13 @@ Template.startButton.onCreated(function() {
 
         }
     });
+
+    Meteor.call("returnTimeStampDiffIfJoinedDuringTask", function(err, res) {
+        console.log("res", res);
+        if (res) {
+            Meteor.lockstep.timer(Meteor.lockstep.workTime - (res / (60 * 1000)));
+        }
+    });
 });
 
 
