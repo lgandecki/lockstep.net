@@ -10,7 +10,7 @@ FlowRouter.route("/focus", {
    action: function() {
        if (!Meteor.user()) {
            var _name = Meteor.lockstep.generateSillyName();
-           var _randomId =  new Meteor.CollectionObjectID()._str;
+           var _randomId =  new Meteor.Collection.ObjectID()._str;
            var _randomPassword =  new Meteor.Collection.ObjectID()._str;
            Accounts.createUser({
                email: _randomId + "@lockstep.net",
