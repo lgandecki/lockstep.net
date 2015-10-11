@@ -6,7 +6,11 @@
                 <h3>Tasks</h3>
             </div>
             <div class="box-content padding">
-                {{> doneTask}}
+                {{#if firstTimeHere}}
+                    <h1>Your first time here</h1>
+                {{else}}
+                    {{> doneTask}}
+                {{/if}}
                 {{#each user}}
                     <div class="row">
                         <div class="col-md-3">
