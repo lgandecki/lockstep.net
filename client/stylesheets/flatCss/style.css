@@ -5316,7 +5316,7 @@ label, input, button, select, textarea {
   margin: 0;
 }
 #navigation .main-nav > li.active > a {
-  background: #FFF;
+  background: #F2F2F2;
   text-decoration: none;
   color: #2a2a2a;
 }
@@ -5353,7 +5353,7 @@ label, input, button, select, textarea {
 #navigation .main-nav > li > a {
   display: block;
   padding: 10px 15px;
-  line-height: 20px;
+  line-height: 52px;
   color: #fff;
 }
 #navigation .main-nav > li > a:hover {

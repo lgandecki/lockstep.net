@@ -92,3 +92,8 @@ li.emojiPicker:hover {
     font-size: 110% !important;
     font-weight: bold !important;
 }
+
+.topNav a {
+    font-weight: bold;
+    font-size: 125%;
+}

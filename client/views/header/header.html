@@ -1,9 +1,24 @@
 <template name="header">
     <div id="navigation" class="navbar-fixed-top">
         <div class="container">
-            <a href="/" id="myBrand">&nbsp;</a>
-            <h2>lockstep.net</h2>
-            <ul class="main-nav hidden-xs hidden-sm"></ul>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/" id="myBrand">&nbsp;</a>
+
+                    <h2>lockstep.net</h2>
+                </div>
+                <div class="col-md-8">
+                    <ul class="main-nav hidden-xs hidden-sm">
+                        {{#each menuLink}}
+                            {{> link }}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
+</template>
+
+<template name="link">
+    <li class="topNav {{active}}"><a href="{{url}}">{{name}}</a></li>
 </template>
