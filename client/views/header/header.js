@@ -39,7 +39,7 @@ Template.header.helpers({
                 name: "Logout",
                 url: '/logout',
                 active: false,
-                login: true
+                logIn: true
             }
         ];
         var _authorizedLinks = [];
@@ -52,7 +52,7 @@ Template.header.helpers({
                     _authorizedLinks.push(link);
                 }
             } else {
-                if (!link.login) {
+                if (!link.logIn) {
                     _authorizedLinks.push(link);
                 } else if (link.logOut) {
                     _authorizedLinks.push(link);
