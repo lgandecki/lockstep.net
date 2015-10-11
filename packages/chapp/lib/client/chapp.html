@@ -1,9 +1,13 @@
 <template name="chapp_form" xmlns="http://www.w3.org/1999/html">
     <div id="chapp_wrapper">
         <div id="chapp_text">
-            {{#each chapp}}
-                {{>chapp_item}}
-            {{/each}}
+            <div id="scrollMePlz">
+                <div id="allChapsForHeight">
+                    {{#each chapp}}
+                        {{>chapp_item}}
+                    {{/each}}
+                </div>
+            </div>
         </div>
 
 
