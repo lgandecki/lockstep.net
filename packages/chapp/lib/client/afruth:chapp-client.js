@@ -4,6 +4,13 @@ Template.chapp_form.created = function() {
         if (_user && _user.currentTeam) {
             Meteor.subscribe("chapps", _user.currentTeam);
         }
+        if (Chapps.find().count() > 1) {
+            var _heightInt = $('#allChapsForHeight').height() + 'px';
+            $('#scrollMePlz').slimScroll({
+                height: '200px',
+                scrollTo: _heightInt
+            });
+        }
     })
 };
 
