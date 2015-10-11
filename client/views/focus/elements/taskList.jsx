@@ -35,7 +35,22 @@ Template.taskList.helpers({
     }
 });
 
+Template.task.helpers({
+    emojis: function() {
+        return _.last(this.emojis, 3);
+    }
+})
+Template.task.onRendered(function() {
+    this.$(".emojiPicker").emojiarea({wysiwyg: false});
+});
 
+Template.task.events({
+   "click .emojiPicker": function(e, t) {
+       console.log("clicked");
+       t.$(".emojiPicker").emojiarea({wysiwyg: false});
+   }
+
+});
 // the moment we click start we change done to current: false
 // we change planned phase: 2
 // we change phase 2 to current: false

@@ -60,6 +60,7 @@
 
 
 <template name="task">
-    <li>{{formatDate timestamp}} - {{display}}</li>
+    <li class="emojiPicker" data-taskId="{{_id}}">{{#if emptyArray emojis}}<i class="fa fa-smile-o pull-right"></i>{{/if}}{{formatDate timestamp}} - {{display}} {{#each emojis}}{{#emoji}}<span
+            class="emoji">{{emojiText}}</span>{{/emoji}}{{/each}}</li>
 </template>
 

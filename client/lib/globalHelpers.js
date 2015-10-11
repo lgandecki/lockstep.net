@@ -5,3 +5,8 @@ Template.registerHelper("formatDate", function(date) {
 Template.registerHelper("notEmptyCursor", function(cursor) {
     return cursor && cursor.count() > 0;
 });
+
+Template.registerHelper("emptyArray", function(array) {
+    console.log("array", array);
+    return !array || array.length === 0;
+});

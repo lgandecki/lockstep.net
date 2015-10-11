@@ -9275,7 +9275,7 @@ label.inline {
 body {
   background: #fff;
   font-family: 'Open Sans', sans-serif;
-  font-size: 13px !important;
+  font-size: 13px;
 }
 
 h1, h2, h3, h4, h5 {

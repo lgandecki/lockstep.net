@@ -86,3 +86,9 @@ h2 {
 .new-task input:focus{
     outline: 0;
 }
+
+.emojiPicker :hover {
+    cursor: pointer;
+    font-size: 110%;
+    font-weight: bold;
+}
