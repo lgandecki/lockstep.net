@@ -25,3 +25,11 @@ Meteor.publish("otherPeopleTasks", function(teamId) {
 
     return Tasks.find({teamId: teamId, current: true});
 });
+
+Meteor.publish("allDoneTasks", function() {
+    return Tasks.find({userId: this.userId, type: "done"});
+});
+
+Meteor.publish("allPlannedTasks", function() {
+    return Tasks.find({userId: this.userId, type: "planned"});
+})
