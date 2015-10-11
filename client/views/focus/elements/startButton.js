@@ -39,9 +39,7 @@ Template.startButton.onCreated(function() {
 
         if (_counter.ready > 0 && (_counter.ready === _counter.outOf)) {
             console.log("Let's start pomodoro!");
-            $(".timer").slideDown(400, "easeOutBack", function() {
 
-            });
             Meteor.lockstep.timer(Meteor.lockstep.workTime);
 
             Meteor.call("cleanUpTasksOnStart");

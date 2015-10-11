@@ -29,7 +29,8 @@ Meteor.methods({
                 },
                 {
                     $set: {teamId: _teamId}
-                }
+                },
+                {multi: true}
             );
 
         }

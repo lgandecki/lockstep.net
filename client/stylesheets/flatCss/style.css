@@ -5728,12 +5728,6 @@ label, input, button, select, textarea {
 .box.box-bordered .form-bordered {
   margin-bottom: 0;
 }
-.box.box-bordered .slimScrollDiv {
-  border-bottom: 2px solid #ddd;
-}
-.box.box-bordered.box-color .slimScrollDiv {
-  border-bottom: 2px solid #368ee0;
-}
 .box.box-bordered.box-color .box-title {
   border-color: #368ee0;
 }

@@ -28,7 +28,17 @@ Meteor.lockstep.timer = function(minutes) {
     clockTicking.load();
     clockTicking.play();
 
-    var _interval = setInterval(function() {
+    var _currentDate = new Date();
+    var _dd = futureDate - _currentDate;
+    //console.log("_dd for ", _dd, " minutes ", minutes);
+    var _dmin = Math.floor(((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) / (60 * 1000) * 1);
+    var _dsec = Math.floor((((_dd % (60 * 60 * 1000 * 24)) % (60 * 60 * 1000)) % (60 * 1000)) / 1000 * 1);
+    var $ss = $(".second"),
+        $mm = $(".minute");
+    $ss.val(_dsec).trigger("change");
+    $mm.val(_dmin).trigger("change");
+
+    var _interval = setInterval(function internalTimer() {
         var _currentDate = new Date();
         var _dd = futureDate - _currentDate;
         //console.log("_dd for ", _dd, " minutes ", minutes);
@@ -49,6 +59,13 @@ Meteor.lockstep.timer = function(minutes) {
         }
 
     }, 1000);
+
+    //setTimeout(function() {
+
+        $(".timer").slideDown(400, "easeOutBack", function() {
+
+        });
+    //}, 1000);
 };
 
 
