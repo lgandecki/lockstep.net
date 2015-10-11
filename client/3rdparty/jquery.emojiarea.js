@@ -172,7 +172,7 @@
 
 		this.$editor.on('click', function(e) {
 			EmojiMenu.show(self);
-			e.stopPropagation();
+			//e.stopPropagation();
 		});
 
 	};
@@ -256,7 +256,7 @@
 		});
 
 		this.$menu.on('mouseup', 'a', function(e) {
-			e.stopPropagation();
+			//e.stopPropagation();
 			return false;
 		});
 
@@ -279,7 +279,11 @@
 
 	EmojiMenu.prototype.onItemSelected = function(group, emoji) {
 		console.log("on item selected", this);
-		this.emojiarea.insert(group, emoji);
+		var _taskId = $(this.emojiarea.$editor).attr("data-taskid");
+		if (_taskId) {
+			Tasks.update({_id: _taskId}, {$push:{emojis: {user: Meteor.userId(), emojiText: emoji}}});
+		}
+		//this.emojiarea.insert(group, emoji);
 		this.hide();
 	};
 
@@ -337,8 +341,8 @@
 
 	EmojiMenu.prototype.hide = function(callback) {
 		if (this.emojiarea) {
-			this.emojiarea.menu = null;
-			this.emojiarea = null;
+			//this.emojiarea.menu = null;
+			//this.emojiarea = null;
 		}
 		this.visible = false;
 		this.$menu.hide();
