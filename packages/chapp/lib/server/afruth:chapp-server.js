@@ -1,12 +1,8 @@
 Meteor.methods({
     enterChat: function(chatText,chatDoc,chatUser) {
         check(chatText, String);
-
-        if(!chatDoc)
-            chatDoc = ChappOptions.defaultDocId;
-
-        if(!chatUser)
-            chatUser = ChappOptions.defaultUserName;
+        check(chatDoc, String);
+        check(chatUser, String);
 
         Chapps.insert({
             chatText: chatText,
@@ -17,25 +13,16 @@ Meteor.methods({
     }
 });
 
-Meteor.publish("chapps", function(docId, dateNow) {
-    check(docId, Object);
-    check(dateNow, Object);
-    if(!docId)
-        docId = ChappOptions.defaultDocId;
+Meteor.publish("chapps", function(docId) {
+    check(docId, String);
 
     var query = {
         chatDoc: docId
     };
 
-    if(dateNow){
-        query.chatDate = {
-            $gte: dateNow
-        }
-    }
-
     return Chapps.find(query,{
         sort: {
-            chatDate: 1
+            chatDate: -1
         },
         limit: 50
     });

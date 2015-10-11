@@ -1,26 +1,9 @@
-Meteor.methods({
-    enterChat: function(chatText,chatDoc,chatUser) {
-        check(chatText, String);
-
-        if(!chatDoc)
-            chatDoc = ChappOptions.defaultDocId;
-
-        if(!chatUser)
-            chatUser = ChappOptions.defaultUserName;
-
-        Chapps.insert({
-            chatText: chatText,
-            chatDoc: chatDoc,
-            chatUserName: chatUser,
-            chatDate: new Date()
-        })
-    }
-});
-
 Template.chapp_form.created = function() {
     Deps.autorun(function () {
-        var dateNow = Session.get('chapp-historysince');
-        Meteor.subscribe("chapps", (!Session.equals('chapp-docid',undefined))?Session.get('chapp-docid'):null, dateNow);
+        var _user = Meteor.user();
+        if (_user && _user.currentTeam) {
+            Meteor.subscribe("chapps", _user.currentTeam);
+        }
     })
 };
 
@@ -46,12 +29,12 @@ Template.chapp_item.helpers({
 
 
 Template.chapp_form.events({
-   'submit #chapp-form': function(ev) {
-       ev.preventDefault();
-       var id = (!Session.equals('chapp-docid',undefined))?Session.get('chapp-docid'):null;
-       var uname = (!Session.equals('chapp-username',undefined))?Session.get('chapp-username'):null;
+   'submit #chapp-form': function(event) {
+       event.preventDefault();
+       var id = Meteor.user().currentTeam;
+       var uname = Meteor.user().profile.sillyName;
        var text = document.getElementById('chapp-input').value;
-       if(text != '') {
+       if(id && uname && text != '') {
            Meteor.call('enterChat', text, id, uname);
            document.getElementById('chapp-input').value = '';
            document.getElementById('chapp-input').focus();
