@@ -1,4 +1,11 @@
+FlowRouter.route("/", {
+    action: function() {
+        setActiveLink();
+        ReactLayout.render(TLayout, { content: <TAnnouncement /> });
+    }
+});
 
+/*
 FlowRouter.route("/focus", {
 
     action: function() {
@@ -24,60 +31,65 @@ FlowRouter.route("/focus", {
             });
         }
         BlazeLayout.render("layout", {header: "header", main: "focus"});
-        // setActiveLink();
+        setActiveLink();
     }
 });
-/*
+
+*/
+
 FlowRouter.route("/history", {
     action: function() {
-        BlazeLayout.render("layout", {header: "header", main: "history"});
-        // setActiveLink();
-    }
-});*/
-
-
-/*FlowRouter.route("/pricing", {
-    action: function() {
-        BlazeLayout.render("layout", {header: "header", main: "pricing"});
-        // setActiveLink();
+        // BlazeLayout.render("layout", {header: "header", main: "history"});
+        setActiveLink();
+        ReactLayout.render(TLayout, { content: <THistory /> });
     }
 });
-*/
+
+
+FlowRouter.route("/pricing", {
+    action: function() {
+        // BlazeLayout.render("layout", {header: "header", main: "pricing"});
+        setActiveLink();
+        ReactLayout.render(TLayout, { content: <TPricing /> });
+    }
+});
+
+/*
 
 FlowRouter.route("/save", {
     action: function() {
         BlazeLayout.render("layout", {header: "header", main: "saveAccount"});
-        // setActiveLink();
+        setActiveLink();
     }
 });
 
+*/
 
-/*FlowRouter.route("/login", {
+FlowRouter.route("/login", {
     action: function() {
         Meteor.loginWithFacebook(function() {
             FlowRouter.go("/lockstep");
         });
     }
-});*/
+});
 
-/*FlowRouter.route("/logout", {
+FlowRouter.route("/logout", {
     action: function() {
         Meteor.logout(function() {
             FlowRouter.go("/");
         });
     }
-});*/
+});
 
-
-/*FlowRouter.route("/help", {
+FlowRouter.route("/help", {
     action: function() {
-        BlazeLayout.render("layout", {header: "header", main: "help"});
         setActiveLink();
+        ReactLayout.render(TLayout, { content: <THelp /> });
     }
-});*/
+});
 
-/*var setActiveLink = function() {
+var setActiveLink = function() {
     Session.set("activeUrl", FlowRouter.current().route.path);
-};*/
+};
 
 //FlowRouter.triggers.enter([setActiveLink]);
