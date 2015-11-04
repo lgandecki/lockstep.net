@@ -14,14 +14,14 @@ Package.onUse(function(api) {
   ])
   api.versionsFrom('METEOR@0.9.0');
   api.addFiles('./lib/client/chapp.html','client');
-  api.addFiles('./lib/common/afruth:chapp-collections.js',['client','server']);
-  api.addFiles('./lib/server/afruth:chapp-server.js','server');
-  api.addFiles('./lib/client/afruth:chapp-client.js','client');
-  api.addFiles('./lib/client/afruth:chapp.css','client');
+  api.addFiles('./lib/common/chapp-collections.js',['client','server']);
+  api.addFiles('./lib/server/chapp-server.js','server');
+  api.addFiles('./lib/client/chapp-client.js','client');
+  api.addFiles('./lib/client/chapp.css','client');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
   api.use('afruth:chapp');
-  api.addFiles('afruth:chapp-tests.js');
+  api.addFiles('chapp-tests.js');
 });
