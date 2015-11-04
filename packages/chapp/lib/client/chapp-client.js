@@ -36,18 +36,18 @@ Template.chapp_item.helpers({
 
 
 Template.chapp_form.events({
-   'submit #chapp-form': function(event) {
-       event.preventDefault();
-       var id = Meteor.user().currentTeam;
-       var uname = Meteor.user().profile.sillyName;
-       var text = document.getElementById('chapp-input').value;
-       if(id && uname && text != '') {
-           Meteor.call('enterChat', text, id, uname);
-           document.getElementById('chapp-input').value = '';
-           document.getElementById('chapp-input').focus();
-           var objDiv = document.getElementById("chapp_text");
-           objDiv.scrollTop = objDiv.scrollHeight + 170;
-       }
+    'submit #chapp-form': function(event) {
+        event.preventDefault();
+        var id = Meteor.user().currentTeam;
+        var uname = Meteor.user().profile.sillyName;
+        var text = document.getElementById('chapp-input').value;
+        if(id && uname && text != '') {
+            Meteor.call('enterChat', text, id, uname);
+            document.getElementById('chapp-input').value = '';
+            document.getElementById('chapp-input').focus();
+            var objDiv = document.getElementById("chapp_text");
+            objDiv.scrollTop = objDiv.scrollHeight + 170;
+        }
 
-   }
+    }
 });
