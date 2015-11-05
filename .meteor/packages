@@ -37,3 +37,5 @@ bozhao:link-accounts
 accounts-facebook
 service-configuration
 facebook
+velocity:core
+xolvio:cucumber

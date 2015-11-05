@@ -31,20 +31,22 @@ Template.startButton.events({
    }
 });
 
+var _previousNumberOfUsers = 0;
+
 Template.startButton.onCreated(function() {
     Tracker.autorun(function() {
         var _counter = _calculateCounter();
 
         console.log("reactive counter ", _counter);
-
-        if (_counter.ready > 0 && (_counter.ready === _counter.outOf)) {
+        if (_counter.ready > 0 && (_counter.ready === _counter.outOf) &&
+        _previousNumberOfUsers === _counter.outOf) {
             console.log("Let's start pomodoro!");
 
             Meteor.lockstep.timer(Meteor.lockstep.workTime);
 
             Meteor.call("cleanUpTasksOnStart");
-
         }
+        _previousNumberOfUsers = _counter.outOf;
     });
 
     Meteor.call("returnTimeStampDiffIfJoinedDuringTask", function(err, res) {

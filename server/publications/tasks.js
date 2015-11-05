@@ -1,4 +1,5 @@
 Meteor.publish("tasks", function() {
+    console.log("publishing my current tasks");
     return Tasks.find({userId: this.userId, current: true});
 });
 
@@ -20,6 +21,7 @@ returnActiveTeamUsers = function(userId) {
 
 //TODO make sure to figure out a way to have private teams.
 Meteor.publish("otherPeopleTasks", function(teamId) {
+    console.log("publishing other people tasks");
     check(teamId, String);
     // shouid check whether user has that team as current
 
@@ -27,9 +29,11 @@ Meteor.publish("otherPeopleTasks", function(teamId) {
 });
 
 Meteor.publish("allDoneTasks", function() {
+    console.log("publishing all done tasks");
     return Tasks.find({userId: this.userId, type: "done"});
 });
 
 Meteor.publish("allPlannedTasks", function() {
+    console.log("publishing all planned tasks");
     return Tasks.find({userId: this.userId, type: "planned"});
 })
