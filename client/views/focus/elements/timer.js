@@ -92,7 +92,6 @@ var afterLog = function() {
 };
 
 
-
 var setFutureDate = function(minutes) {
     var _now = new Date();
     futureDate = new Date(_now.getTime() + minutes * 60000);

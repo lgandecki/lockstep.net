@@ -27,6 +27,9 @@ Template.startButton.helpers({
 Template.startButton.events({
    "click button": function() {
        console.log("clicking a button");
+       // When new user joins team, set his interval to team interval
+       // increment user interval on click
+       // when the Tracker.autorun below starts the timer, set the team interval to random team member interval value.
        Meteor.users.update({_id: Meteor.userId()}, {$set: {ready: true}});
    }
 });
@@ -41,7 +44,6 @@ Template.startButton.onCreated(function() {
             console.log("Let's start pomodoro!");
 
             Meteor.lockstep.timer(Meteor.lockstep.workTime);
-
             Meteor.call("cleanUpTasksOnStart");
 
         }
