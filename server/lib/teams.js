@@ -36,5 +36,12 @@ Meteor.methods({
         }
 
         Meteor.users.update({_id: this.userId}, {$set: {currentTeam: _teamId}});
+        return _teamId;
+    },
+    joinTeam: function(teamId) {
+        check(teamId, String);
+        var _user = Meteor.users.findOne({_id: this.userId});
+        Teams.update({_id: teamId}, {$addToSet: {userIds: this.userId}});
+        Meteor.users.update({_id: this.userId}, {$set: {currentTeam: teamId}});
     }
 });

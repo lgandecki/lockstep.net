@@ -5,33 +5,46 @@ FlowRouter.route("/", {
     }
 });
 
+var _checkOrCreateUser = function(cb) {
+    if (_.isNull(Meteor.user())) {
+        var _name = Meteor.lockstep.generateSillyName();
+        var _randomId = new Meteor.Collection.ObjectID()._str;
+        var _randomPassword = new Meteor.Collection.ObjectID()._str;
+        Accounts.createUser({
+            email: _randomId + "@lockstep.net",
+            password: _randomPassword,
+            profile: {
+                sillyName: _name
+            }
+        }, function() {
+            cb && cb();
+        });
+    } else {
+        cb && cb();
+    }
+};
+
 FlowRouter.route("/focus", {
 
     action: function() {
-        if (!Meteor.user()) {
-            var _name = Meteor.lockstep.generateSillyName();
-            var _randomId = new Meteor.Collection.ObjectID()._str;
-            var _randomPassword = new Meteor.Collection.ObjectID()._str;
-            Accounts.createUser({
-                email: _randomId + "@lockstep.net",
-                password: _randomPassword,
-                profile: {
-                    sillyName: _name
-                }
-            }, function() {
+           _checkOrCreateUser(function() {
+               console.log("Meteor user ", Meteor.user());
                 Meteor.call("findAndJoinTeam", function(error, teamId) {
-                    console.log("found team ", teamId);
+                    FlowRouter.go("/focus/" + teamId);
                 });
             });
-
-        } else {
-            Meteor.call("findAndJoinTeam", function(error, teamId) {
-                console.log("found team ", teamId);
-            });
-        }
-        BlazeLayout.render("layout", {header: "header", main: "focus"});
         setActiveLink();
     }
+});
+
+FlowRouter.route("/focus/:teamId", {
+   action: function(params) {
+       _checkOrCreateUser(function() {
+           Meteor.call("joinTeam", params.teamId, function(error) {
+               BlazeLayout.render("layout", {header: "header", main: "focus"});
+           });
+       });
+   }
 });
 
 FlowRouter.route("/history", {
