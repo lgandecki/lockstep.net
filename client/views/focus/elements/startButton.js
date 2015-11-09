@@ -30,7 +30,7 @@ Template.startButton.events({
        // When new user joins team, set his interval to team interval
        // increment user interval on click
        // when the Tracker.autorun below starts the timer, set the team interval to random team member interval value.
-       Meteor.users.update({_id: Meteor.userId()}, {$set: {ready: true}});
+       Meteor.users.update({_id: Meteor.userId()}, {$set: {ready: true}, $inc: {interval: 1}});
    }
 });
 
@@ -44,8 +44,9 @@ Template.startButton.onCreated(function() {
             console.log("Let's start pomodoro!");
 
             Meteor.lockstep.timer(Meteor.lockstep.workTime);
-            Meteor.call("cleanUpTasksOnStart");
 
+            Meteor.call("setTeamInterval");
+            Meteor.call("cleanUpTasksOnStart");
         }
     });
 
@@ -61,13 +62,13 @@ Template.startButton.onCreated(function() {
 var _calculateCounter = function() {
     var _ready = 0;
     var _outOf = 0;
-    var _user = Meteor.user();
+    var _user = Meteor.users.findOne({_id: Meteor.userId()}, {fields: {currentTeam: 1}});
     if (_user && _user.currentTeam) {
-        var _team = Teams.findOne({_id: _user.currentTeam});
+        var _team = Teams.findOne({_id: _user.currentTeam}, {fields: {interval: 0}});
         if (_team) {
             _outOf = _team.userIds.length;
             _team.userIds.forEach(function(userId) {
-                var _otherUser = Meteor.users.findOne({_id: userId});
+                var _otherUser = Meteor.users.findOne({_id: userId}, {fields: {ready: 1}});
                 if ((_otherUser && _otherUser.ready)) {
                     _ready++;
                 }

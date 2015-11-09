@@ -6,8 +6,10 @@ if (!Meteor.lockstep){
     Meteor.lockstep = {};
 }
 
-Meteor.lockstep.restTime = 5; // should be 5
-Meteor.lockstep.workTime = 25; // should be 25
+Meteor.lockstep.restTime = 0.1; // should be 5
+Meteor.lockstep.longRestTime = 15; // should be 15
+Meteor.lockstep.workTime = 0.2; // should be 25
+
 
 Template.timer.onRendered(function() {
     $(".knob").knob();
@@ -88,7 +90,12 @@ var ringAlarm = function() {
 var afterLog = function() {
     ringAlarm();
     timerFunction = "rest";
-    Meteor.lockstep.timer(Meteor.lockstep.restTime);
+    console.log("After log break");
+    if (Meteor.user().interval % 3 !== 0) {
+        Meteor.lockstep.timer(Meteor.lockstep.restTime);
+    } else {
+        Meteor.lockstep.timer(Meteor.lockstep.longRestTime);
+    }
 };
 
 

@@ -1,5 +1,5 @@
 Meteor.publish("userData", function() {
-   return Meteor.users.find({_id: this.userId}, {fields: {currentTeam: 1, ready: 1}});
+   return Meteor.users.find({_id: this.userId}, {fields: {currentTeam: 1, ready: 1, interval: 1}});
 });
 
 returnActiveTeamUsers = function(userId) {

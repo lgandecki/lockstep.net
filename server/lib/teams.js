@@ -42,6 +42,11 @@ Meteor.methods({
         check(teamId, String);
         var _user = Meteor.users.findOne({_id: this.userId});
         Teams.update({_id: teamId}, {$addToSet: {userIds: this.userId}});
-        Meteor.users.update({_id: this.userId}, {$set: {currentTeam: teamId}});
+        var _team = Teams.findOne({_id: teamId});
+        Meteor.users.update({_id: this.userId}, {$set: {currentTeam: teamId}, interval: _team.interval});
+    },
+    setTeamInterval: function() {
+        var _user = Meteor.users.findOne({_id: this.userId});
+        Teams.update({_id: _user.currentTeam}, {$set: {interval: _user.interval}});
     }
 });
